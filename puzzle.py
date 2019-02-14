@@ -1,18 +1,3 @@
-'''
-Code developed by Nir Oren
-Minimally modified by Ricardo Soares
-Biggest change: Internal representation
-(It's become horizontal, instead of vertical)
-------------------------------
-University of Aberdeen
-MSc Artificial Intelligence
-Modified in Python 2.7.14
-'''
-
-import sys
-from random import randint
-from test.sortperf import flush
-
 class TilePuzzle:
 	def __init__(self,size):
 		self.size=size
@@ -82,7 +67,6 @@ class TilePuzzle:
 			for j in range(0,self.size):
 				print(self.puzzle[i][j],end=" ", flush =True)
 			print("")
-			#print 
 
 	def doMove(self,move):
 		if move=="U":
@@ -94,17 +78,18 @@ class TilePuzzle:
 		if move=="R":
 			self.right()
 	
-	def permute(self,numPerm):
-		for i in range(0,numPerm):
-			self.doMove(self.moves[randint(0,3)])
-	
 	def parseMoveSequence(self,string):
-		for m in string:
-			self.doMove(m)
-			
+		move = str(string)
+		t = self
+		print("Initial State")
+		t.printPuzzle()
+		for m in move:
+			print("")
+			print("  | ")
+			print("  | ")
+			print(" \\\'/ \n")
+			t.doMove(m)
+			t.printPuzzle()
+		print("Goal State")
 		
-
-#t=tilePuzzle(int(sys.argv[1]))
-#t.permute(int(sys.argv[2]))
-#t.printPuzzle()
 

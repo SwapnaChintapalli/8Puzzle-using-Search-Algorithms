@@ -1,11 +1,3 @@
-'''
-Code developed by Ricardo Soares
-------------------------------
-University of Aberdeen
-MSc Artificial Intelligence
-Written in Python 2.7.14
-'''
-
 from queue import Queue
 from copy import deepcopy
 heur = 0
