@@ -1,21 +1,37 @@
 import puzzle 
-import sys
 import searches
-
+import time
 t=puzzle.TilePuzzle(3)
-# t.permute(int(10))
+print("Enter initial state:")
 puz = input()
 t.readPuzzle(puz)
 t.printPuzzle()
 s=searches.Search(t)
 print("Enter Search Algo:")
 srch = str(input())
-print(srch)
 if srch == 'bfs':
-    print("Considering Best First:", s.bestFirst())
+    print("Breadth First Search:")
+    start = time.time()
+    string = s.breadthFirst()
+    end = time.time()
 elif srch == "ids":
-    print("Considering Iterative Deepening Search:", s.iterativeDeepening())
+    print("Iterative Deepening Search:")
+    start = time.time()
+    string = s.iterativeDeepening()
+    end = time.time()
 elif srch == 'astar1':
-    print("Considering A* 1 Search:", s.aSearch(0))
+    print("A* 1 Search:")
+    start = time.time()
+    string = s.aSearch(0)
+    end = time.time()
 elif srch == 'astar2':
-    print("Considering A* 2 Search:", s.aSearch(1))
+    print("A* 2 Search:")
+    start = time.time()
+    string = s.aSearch(1)
+    end = time.time()
+else:
+    print("Invalid Search Algorithm")
+    
+if string!= None:
+    print("Total Time: ",end-start," seconds")
+    t.parseMoveSequence(string)
