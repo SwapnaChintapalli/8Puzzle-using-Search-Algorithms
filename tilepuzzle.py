@@ -31,6 +31,7 @@ elif srch == 'astar2':
     end = time.time()
 else:
     print("Invalid Search Algorithm")
+    string = None
     
 if string!= None:
     print("Total Time: ",end-start," seconds")
