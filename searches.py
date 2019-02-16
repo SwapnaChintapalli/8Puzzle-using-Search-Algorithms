@@ -18,19 +18,19 @@ class Search:
         closed = list()
         leaves = Queue()
         leaves.put(self.start)
-        qcount = 0
+        qcount = -1
         while True:
             if leaves.empty():
                 return None
             actual = leaves.get()
-#             print(actual)
+            print(actual)
             totalMoves = str(actual)
             if totalMoves.__len__() > 10:
                 print("Failure: Goal state was not found before or at depth 10")
                 return
             if actual.goalState():
                 print("Number of Moves: ",totalMoves.__len__())
-                print("Number of States Enqueued: ",qcount-1)
+                print("Number of States Enqueued: ",qcount)
                 return actual
             elif actual.state.puzzle not in closed:
                 closed.append(actual.state.puzzle)
@@ -65,7 +65,7 @@ class Search:
             if leaves.empty():
                 return None
             actual = leaves.get()
-#             print(actual)
+            print(actual)
             if actual.goalState():
                 print("Total no.of Moves: ",actual.depth)
                 print("Number of States Enqueued: ",ids_count-1)
